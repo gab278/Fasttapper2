@@ -161,4 +161,80 @@ public class OverlayService extends Service {
                 PixelFormat.TRANSLUCENT
         );
         markerParams.gravity = Gravity.TOP | Gravity.START;
-        markerParams.x = (i
+        markerParams.x = (int) x - 30;
+        markerParams.y = (int) y - 30;
+
+        windowManager.addView(targetMarker, markerParams);
+    }
+
+    private void startTapping() {
+        isTapping = true;
+        Toast.makeText(this, "Tapping started!", Toast.LENGTH_SHORT).show();
+
+        tapRunnable = new Runnable() {
+            @Override
+            public void run() {
+                if (isTapping && targetX >= 0 && targetY >= 0) {
+                    simulateTap(targetX, targetY);
+                    tapHandler.postDelayed(this, TAP_INTERVAL_MS);
+                }
+            }
+        };
+        tapHandler.post(tapRunnable);
+    }
+
+    private void simulateTap(float x, float y) {
+        if (TapAccessibilityService.isAvailable()) {
+            TapAccessibilityService.instance.performTap(x, y);
+        } else {
+            try {
+                Runtime.getRuntime().exec(new String[]{"input", "tap",
+                        String.valueOf((int) x), String.valueOf((int) y)});
+            } catch (Exception e) {
+                uiHandler.post(() ->
+                    Toast.makeText(OverlayService.this,
+                        "Enable FastTapper in Settings > Accessibility!",
+                        Toast.LENGTH_LONG).show()
+                );
+                isTapping = false;
+            }
+        }
+    }
+
+    private void stopTapping(ImageButton btn, TextView label) {
+        isTapping = false;
+        state = 0;
+        if (tapRunnable != null) tapHandler.removeCallbacks(tapRunnable);
+        label.setText("Set Target");
+        btn.setImageResource(R.drawable.ic_play);
+        Toast.makeText(this, "Tapping stopped", Toast.LENGTH_SHORT).show();
+    }
+
+    private void createNotificationChannel() {
+        NotificationChannel channel = new NotificationChannel(
+                CHANNEL_ID, "FastTapper", NotificationManager.IMPORTANCE_LOW);
+        NotificationManager manager = getSystemService(NotificationManager.class);
+        if (manager != null) manager.createNotificationChannel(channel);
+    }
+
+    private Notification buildNotification() {
+        return new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setContentTitle("FastTapper Running")
+                .setContentText("Floating overlay is active")
+                .setSmallIcon(android.R.drawable.ic_menu_compass)
+                .setPriority(NotificationCompat.PRIORITY_LOW)
+                .build();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        isTapping = false;
+        if (tapRunnable != null) tapHandler.removeCallbacks(tapRunnable);
+        if (overlayView != null) try { windowManager.removeView(overlayView); } catch (Exception ignored) {}
+        if (targetMarker != null) try { windowManager.removeView(targetMarker); } catch (Exception ignored) {}
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) { return null; }
+}
