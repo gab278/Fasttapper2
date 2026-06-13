@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/bubble_bg"
+    android:padding="8dp"
+    android:elevation="8dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageButton
+            android:id="@+id/btnAction"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_play"
+            android:background="@drawable/circle_btn_bg"
+            android:contentDescription="Action"
+            android:scaleType="centerInside"
+            android:padding="10dp"/>
+
+        <ImageButton
+            android:id="@+id/btnClose"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_close"
+            android:background="@null"
+            android:contentDescription="Close"
+            android:scaleType="centerInside"
+            android:layout_marginStart="4dp"
+            android:tint="#FF4444"
+            android:padding="4dp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/labelText"
+        android:text="Set Target"
+        android:textSize="10sp"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"/>
+
+</LinearLayout>
