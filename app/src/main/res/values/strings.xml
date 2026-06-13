@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FastTapper</string>
+    <string name="accessibility_service_description">FastTapper uses accessibility to simulate rapid screen taps on non-rooted devices.</string>
+</resources>
