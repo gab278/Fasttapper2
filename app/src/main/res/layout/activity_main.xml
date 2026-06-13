@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="32dp"
+    android:background="#0D0D0D">
+
+    <TextView
+        android:text="⚡ FastTapper"
+        android:textSize="32sp"
+        android:textColor="#FF6600"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:text="Auto-tap any spot on your screen"
+        android:textSize="14sp"
+        android:textColor="#888888"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"/>
+
+    <TextView
+        android:id="@+id/statusText"
+        android:textSize="14sp"
+        android:textColor="#CCCCCC"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1A1A1A"
+        android:padding="16dp"
+        android:layout_marginBottom="24dp"
+        android:text="Checking permissions..."/>
+
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="▶ START OVERLAY"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#FF6600"
+        android:textStyle="bold"
+        android:layout_marginBottom="12dp"/>
+
+    <Button
+        android:id="@+id/btnStop"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="■ STOP OVERLAY"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#333333"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp"/>
+
+    <TextView
+        android:text="HOW TO USE"
+        android:textSize="12sp"
+        android:textColor="#FF6600"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:text="1. Tap START OVERLAY\n2. A floating ⚡ bubble appears\n3. Tap bubble → Set Target\n4. Tap the screen spot you want auto-tapped\n5. Tapping begins automatically!\n6. Tap bubble again to STOP\n\n⚠️ Enable FastTapper in Settings › Accessibility for best results"
+        android:textSize="13sp"
+        android:textColor="#AAAAAA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingMultiplier="1.5"/>
+
+</LinearLayout>
