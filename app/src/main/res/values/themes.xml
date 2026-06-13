@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.FastTapper" parent="android:Theme.Material.NoTitleBar">
-        <item name="android:colorPrimary">#FF6600</item>
-        <item name="android:colorPrimaryDark">#CC4400</item>
-        <item name="android:colorAccent">#FF6600</item>
+    <style name="Theme.FastTapper" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">#FF6600</item>
+        <item name="colorPrimaryDark">#CC4400</item>
+        <item name="colorAccent">#FF6600</item>
         <item name="android:windowBackground">#0D0D0D</item>
     </style>
 </resources>
