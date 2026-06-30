@@ -23,7 +23,7 @@ import androidx.core.app.NotificationCompat;
 public class OverlayService extends Service {
 
     private static final String CHANNEL_ID = "fasttapper_channel";
-    private static final int TAP_INTERVAL_MS = 10;
+    private static final int TAP_INTERVAL_MS = 15;
 
     private WindowManager windowManager;
     private View overlayView;
